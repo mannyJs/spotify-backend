@@ -17,6 +17,7 @@ const redirect_uri = process.env.REDIRECT_URI;
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const port = process.env.PORT || 8888;
+
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
@@ -46,6 +47,7 @@ app.get("/login", (req, res) => {
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
+  console.log('logged in')
   // your application requests authorization
   var scope =
     "user-read-private user-read-email user-library-read playlist-read-private";
@@ -159,4 +161,7 @@ app.get("/refresh_token", (req, res) => {
 
 app.listen(port, () => {
   console.log("running on port: ", port);
+  console.log(redirect_uri);
+  console.log(client_id);
+  console.log(client_secret);
 });
