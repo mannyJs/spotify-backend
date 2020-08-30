@@ -47,7 +47,8 @@ app.get("/login", (req, res) => {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = "user-read-private user-read-email user-library-read playlist-read-private";
+  var scope =
+    "user-read-private user-read-email user-library-read playlist-read-private";
   res.redirect(
     "https://accounts.spotify.com/authorize?" +
       querystring.stringify({
@@ -156,5 +157,6 @@ app.get("/refresh_token", (req, res) => {
   });
 });
 
-console.log('running on port: ', port);
-app.listen(port);
+app.listen(port, () => {
+  console.log("running on port: ", port);
+});
