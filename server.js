@@ -156,4 +156,5 @@ app.get("/refresh_token", (req, res) => {
   });
 });
 
+console.log('running on port: ', PORT);
 app.listen(port);
