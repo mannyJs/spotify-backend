@@ -13,10 +13,10 @@ var cors = require("cors");
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
 
-var client_id = "ec9da6002b0d48208dbcbf75a9d4f167"; // Your client id
-var client_secret = "817fd002ade2460d81c47a73b10a3a3b"; // Your secret
-var redirect_uri = "http://localhost:8888/callback"; // Your redirect uri
-const youtube_api_key = "AIzaSyAR99bxK0eOEQ_dCceQco1HYiCQ5tu5Z48";
+const redirect_uri = process.env.REDIRECT_URI;
+const client_id = process.env.CLIENT_ID;
+const client_secret = process.env.CLIENT_SECRET;
+const port = process.env.PORT || 8888;
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
@@ -88,7 +88,7 @@ app.get("/callback", (req, res) => {
       headers: {
         Authorization:
           "Basic " +
-          new Buffer(client_id + ":" + client_secret).toString("base64"),
+          new Buffer.from(client_id + ":" + client_secret).toString("base64"),
       },
       json: true,
     };
@@ -156,4 +156,4 @@ app.get("/refresh_token", (req, res) => {
   });
 });
 
-app.listen(8888);
+app.listen(port);
