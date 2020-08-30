@@ -114,7 +114,7 @@ app.get("/callback", (req, res) => {
 
         // we can also pass the token to the browser to make requests from there
         res.redirect(
-          "http://my-spotify-songs.s3-website.eu-central-1.amazonaws.com/app?" +
+          "http://my-spotify-songs.s3-website.eu-central-1.amazonaws.com/app.html?" +
             querystring.stringify({
               access_token: access_token,
               refresh_token: refresh_token,
